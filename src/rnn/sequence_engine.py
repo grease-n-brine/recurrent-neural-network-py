@@ -16,7 +16,7 @@ if not data_path.exists():
     urllib.request.urlretrieve(data_url, data_path)
 
 df = pd.read_csv(data_path)
-raw = df.values.astype(np.float32)
+raw = df[["Passengers"]].values.astype(np.float32)
 
 passengers_raw = df['Passengers'].values.astype(np.float32)
 passengers_min = passengers_raw.min()
