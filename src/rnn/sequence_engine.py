@@ -6,8 +6,10 @@ import urllib.request
 import os
 import pathlib
 
+PROJECT_ROOT = pathlib.Path(__file__).parent.parent.parent
+
 data_url = "https://raw.githubusercontent.com/jbrownlee/Datasets/refs/heads/master/airline-passengers.csv"
-data_path = pathlib.Path("data/airline-passengers.csv")
+data_path = PROJECT_ROOT / "data/airline-passengers.csv"
 
 if not data_path.exists():
     os.makedirs(data_path.parent, exist_ok=True)
