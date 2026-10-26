@@ -14,3 +14,12 @@ data_path = PROJECT_ROOT / "data/airline-passengers.csv"
 if not data_path.exists():
     os.makedirs(data_path.parent, exist_ok=True)
     urllib.request.urlretrieve(data_url, data_path)
+
+df = pd.read_csv(data_path)
+raw = df.values.astype(np.float32)
+
+passengers_raw = df['Passengers'].values.astype(np.float32)
+passengers_min = passengers_raw.min()
+passengers_max = passengers_raw.max()
+
+passengers_normalized = (passengers_raw - passengers_min) / (passengers_max - passengers_min)
